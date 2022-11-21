@@ -6,6 +6,8 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -127,7 +129,12 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
         check()
 
     }
+
+
     private fun check(){
+
+        var buttonArray = arrayOf(b11, b12, b13, b21, b22, b23, b31, b32, b33)
+
         var winnerPlayer = 0
         if(firsPlayer.contains(1) && firsPlayer.contains(4)  && firsPlayer.contains(7) ){
             winnerPlayer = 1
@@ -194,6 +201,19 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
             b31.isEnabled = false
             b32.isEnabled = false
             b33.isEnabled = false
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                for (i in 0 until buttonArray.size){
+                    buttonArray[i].text = ""
+                    buttonArray[i].setBackgroundColor(0X3FA8A7)
+                    buttonArray[i].isEnabled = true
+                    activePlayer=1
+                    firsPlayer = ArrayList()
+                    secondPlayer = ArrayList()
+                }
+            }, 700)
+
+
         }
         if (winnerPlayer == 2){
             Toast.makeText(this, "მოიგო მეორემ მოთამაშემ", Toast.LENGTH_SHORT).show()
@@ -209,9 +229,31 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
             b32.isEnabled = false
             b33.isEnabled = false
 
+            Handler(Looper.getMainLooper()).postDelayed({
+                for (i in 0 until buttonArray.size){
+                    buttonArray[i].text = ""
+                    buttonArray[i].setBackgroundColor(0X3FA8A7)
+                    buttonArray[i].isEnabled = true
+                    activePlayer=1
+                    firsPlayer = ArrayList()
+                    secondPlayer = ArrayList()
+                }
+            }, 700)
+
         }
         else if(firsPlayer.size + secondPlayer.size == 9){
-            Toast.makeText(this, "განგამ სტაილი", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "ეე განგამსტაილ", Toast.LENGTH_SHORT).show()
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                for (i in 0 until buttonArray.size){
+                    buttonArray[i].text = ""
+                    buttonArray[i].setBackgroundColor(0X3FA8A7)
+                    buttonArray[i].isEnabled = true
+                    activePlayer=1
+                    firsPlayer = ArrayList()
+                    secondPlayer = ArrayList()
+                }
+            }, 700)
         }
 
     }
