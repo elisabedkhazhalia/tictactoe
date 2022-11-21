@@ -83,6 +83,9 @@ class MainActivity2 : AppCompatActivity(), View.OnClickListener {
                 firsPlayer = ArrayList()
                 secondPlayer = ArrayList()
             }
+            player1point = 0
+            player2point = 0
+            setPoints()
         }
 
 
